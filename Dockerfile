@@ -11,7 +11,6 @@ ADD . /opt/app
 RUN npm install --cache /tmp/empty-cache && \
   npm run postinstall && \
   npm run env && \
-  npm run build && \
   rm -rf /tmp/*
   # TODO: These should be added in the future to correctly cache express-minify content to disk
   # Currently, doing this breaks the browser cache.
