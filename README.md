@@ -6,29 +6,31 @@ This is a combination of a slightly tweaked version of Nightscout and two of my 
 ## KiteScout (my version)
 ![kitescout](./assets/kitescout.png)
 
-- **Nightscout** - same as before but added a little extra openaps stuff
-- **Kitescout** - Copy-cat of Nightscout-web but with all the features I miss in NS. I used a graph-js-library that enabled me to add a bunch of awesome features like:
+- **Nightscout** - same as before but added a little extra openaps stuff (based on Nightscout master - currently: 15.0.2)
+- **Kitescout** - Alternative frontend of Nightscout-web but with all the features I miss in NS. I used a graph-js-library that enabled me to add a bunch of awesome features like:
   - Infinit panning (does not only show 2 days, but gets more data the further you pan)
   - zoom - like it should be done (not the hour-selection on NS, but use scroll-wheel or fingers to scroll)
-  - Added the data that is shown in AAPS but not in NS: 
+  - Added the data and graphs that is shown in AAPS but not in NS: 
     - IOB
     - COB
     - Activity
     - Sensitivity
   - Reason - displays the reason for why openAPS decided to make its adjustment. 
 
-### TODO
-- ISF & CR 
-  - show current in table (after adjustment by autosens/%profile)
-  - tooltip, show normal profile
-- Basal
-  - Current vs profile
-- prediction lines
-  - Fill the one that is currently in use
-- 
-
 
 ## Installation
+The installation process depends on how you host your Nightscout website. 
+- Google Cloud
+  - using the menu provided by the navid-script ([xDrip-tutorial](https://navid200.github.io/xDrip/docs/Nightscout/GoogleCloud.html))
+  - ![google-cloud](./assets/google-cloud_2.png)
+  ![google-cloud](./assets/google-cloud_3.png)
+  ![google-cloud](./assets/google-cloud.png)
+- by using docker (`kallehagstrom/knightscout:latest` or one of the tags from dockerhub)
+  - Azure
+    ![google-cloud](./assets/azure.png)
+  - Render
+  - Docker compose
+- Heroku
 The installation process is the same as with a usual nightscout installation, but you need to fetch my branch **wip/kitescout** from my fork, and then choose to the branch (**wip/kitescout**) instead of master-branch under Heroku/deploy!
 Here is how you'd do it from the terminal 
 - Since you have installed AAPS or Ios loop - your computer already have git installed.
