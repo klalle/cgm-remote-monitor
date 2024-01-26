@@ -1,5 +1,3 @@
-Nightscout Web Monitor (a.k.a. cgm-remote-monitor)
-==================================================
 ## Customization of Nightscout
 This is a combination of a slightly tweaked version of Nightscout and two of my own custom build react-apps that helps with APS-looping. 
 ## Nightscout (slightly modified)
@@ -180,7 +178,7 @@ Only read this if you want to make changes and debug my applications in vscode!
 
 ## ********** End of custom stuff **************
 
-Nightscout Web Monitor (a.k.a. cgm-remote-monitor)
+Nightscout Web Monitor (a.k.a. cgm-remote-monitor)2
 ==================================================
 
 ![nightscout horizontal](https://cloud.githubusercontent.com/assets/751143/8425633/93c94dc0-1ebc-11e5-99e7-71a8f464caac.png)
