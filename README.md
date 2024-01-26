@@ -1,5 +1,182 @@
+Nightscout Web Monitor (a.k.a. cgm-remote-monitor)
+==================================================
 ## Customization of Nightscout
 This is a combination of a slightly tweaked version of Nightscout and two of my own custom build react-apps that helps with APS-looping. 
+## Nightscout (slightly modified)
+![Nightscout](./assets/ns.png)
+
+## KiteScout (my version)
+![kitescout](./assets/kitescout.png)
+
+- **Nightscout** - same as before but added a little extra openaps stuff
+- **Kitescout** - Copy-cat of Nightscout-web but with all the features I miss in NS. I used a graph-js-library that enabled me to add a bunch of awesome features like:
+  - Infinit panning (does not only show 2 days, but gets more data the further you pan)
+  - zoom - like it should be done (not the hour-selection on NS, but use scroll-wheel or fingers to scroll)
+  - Added the data that is shown in AAPS but not in NS: 
+    - IOB
+    - COB
+    - Activity
+    - Sensitivity
+  - Reason - displays the reason for why openAPS decided to make its adjustment. 
+
+### TODO
+- ISF & CR 
+  - show current in table (after adjustment by autosens/%profile)
+  - tooltip, show normal profile
+- Basal
+  - Current vs profile
+- prediction lines
+  - Fill the one that is currently in use
+- 
+
+
+## Installation
+The installation process is the same as with a usual nightscout installation, but you need to fetch my branch **wip/kitescout** from my fork, and then choose to the branch (**wip/kitescout**) instead of master-branch under Heroku/deploy!
+Here is how you'd do it from the terminal 
+- Since you have installed AAPS or Ios loop - your computer already have git installed.
+1. create a folder on the computer where you want to store Nightscout code
+2. open terminal in that folder
+   - if on windws: type "cmd" into the location bar at the top of the window (see [this](https://www.youtube.com/watch?v=Bp5Fi3X3s4w) if you get stuck)
+3. clone your fork of Nightscout from github to that folder by typing this command (change "`<yourgithubusername>`" to you actual username)
+   ```bash
+   git clone https://github.com/<yourgithubusername>/cgm-remote-monitor.git
+   ```
+   (you can find your  username if you open [github](www.github.com) if you have forgotten it)
+4. Grab the branch from my fork in two steps: 
+```bash
+git remote add -f klalle https://github.com/klalle/cgm-remote-monitor.git
+```
+```bash
+git checkout -b wip/kitescout klalle/wip/kitescout
+```
+5. Push my branch to your fork on github:
+```bash
+git push --set-upstream origin wip/kitescout
+```
+6. Log into [heroku](www.heroku.com) and select the "Deploy"-tab
+
+7. Scroll down to the very bottom and change from "master" to "wip/kitescout" and press **"Deploy Branch"**
+   - If yo're not seing the "Depoly branch" you might have lost connection to your github. 
+     -  scroll up to "Deployment method" and choose Github and connect to you github
+     -  select cgm-remote-monitor next to "App connected to Github" 
+     -  now Deploy Branch should pop up at the bottom!
+  
+Congratulations, you now have my branch deployed to your heroku.
+
+### Updates
+If I have made updates to the code and you want to fetch them to your branch, this is how you do it: 
+1. pull my latest commit from the branch
+2. push to your github
+```bash
+git pull klalle wip/kitescout
+git push
+```
+3. deploy the branch (again) from heroku/deploy
+
+
+
+## My dev-setup 
+Only read this if you want to make changes and debug my applications in vscode!
+
+<details>
+  <summary><b>This is the launch.json I use...</b></summary>
+  press F5 and add replace content of launch.json with this: 
+  
+```
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        
+        { //start entire NS-backen including Nightscout, Kitscout and omnipod-stash backends
+            "name": "Backend NS",
+            "type": "node",
+            "request": "launch",
+            "skipFiles": ["<node_internals>/**"],
+            "program": "${workspaceFolder}/lib/server/server.js",
+            "envFile": "${workspaceFolder}/my.env",
+        },
+        { //only start kitescout-backend
+            "name": "Kitescout BE",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/lib/kitescout/server/serverstarter.js",
+            "envFile": "${workspaceFolder}/my.env",
+        },
+        { //only start kitescout-backend
+            "name": "Omnipod BE",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/lib/omnipod_stash/server/serverstarter.js",
+            "envFile": "${workspaceFolder}/my.env",
+        },
+
+        //Frontend (assumes backend is running)
+        { //Launch chrome on NS-server (only backend-breake-points...)
+            "name": "Chrome FE",
+            "request": "launch",
+            "type": "pwa-chrome",
+            "url": "http://localhost:1337",
+            "webRoot": "${workspaceFolder}"
+        },
+        { //Launch frontend service (which enables breakepoints in frontend app)
+            "name": "Kitescout FE",
+            "type": "node",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/lib/kitescout/frontend",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": [
+                "run-script", "start"
+            ],
+            "port": 3000,
+            "envFile": "${workspaceFolder}/my.env",
+        },
+        { //Launch frontend service (which enables breakepoints in frontend app)
+            "name": "Omnipod FE",
+            "type": "node",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/lib/omnipod_stash/frontend",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": [
+                "run-script", "start"
+            ],
+            "port": 3000
+        },
+        { //Launch chrome and attach to the Kitescout FE above to enable breakepoints
+            "name": "Chrome",
+            "request": "launch",
+            "type": "pwa-chrome",
+            "url": "http://localhost:3000",
+            "webRoot": "${workspaceFolder}"
+        }
+
+    ],
+    "compounds": [
+        {
+            "name": "NS-be KS-fe",
+            "configurations": ["Backend NS","Kitescout FE", "Chrome"],
+            "stopAll": true
+        },
+        {
+            "name": "Kitescout all",
+            "configurations": ["Kitescout BE","Kitescout FE", "Chrome"],
+            "stopAll": true
+        },
+        {
+            "name": "Omnipod all",
+            "configurations": ["Omnipod BE","Omnipod FE", "Chrome"],
+            "stopAll": true
+        },
+        
+    ]
+}
+
+```
+  
+
+</details>
 
 ## ********** End of custom stuff **************
 
