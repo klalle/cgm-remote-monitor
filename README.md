@@ -23,7 +23,7 @@ The installation process depends on how you host your Nightscout website.
 - <u>**Google Cloud**</u>
   - using the menu provided by the navid-script ([xDrip-tutorial](https://navid200.github.io/xDrip/docs/Nightscout/GoogleCloud.html))
 <details>
-  <summary>expand to show steps to setup on **Google Cloud**...</summary>
+  <summary>expand to show steps to setup on <b>Google Cloud</b>...</summary>
 
 ![google-cloud](./assets/google-cloud_2.png)
   ![google-cloud](./assets/google-cloud_3.png)
@@ -33,7 +33,7 @@ The installation process depends on how you host your Nightscout website.
 - **using docker** (`kallehagstrom/knightscout:latest` or one of the tags from dockerhub)
   - <u>**Azure**</u>
 <details>
-  <summary>expand to show steps to setup on **Azure**...</summary>
+  <summary>expand to show steps to setup on <b>Azure</b>...</summary>
 
     ![google-cloud](./assets/azure.png)
 </details>
@@ -42,7 +42,7 @@ The installation process depends on how you host your Nightscout website.
   - <u>**Docker compose**</u>
 - <u>**Heroku**</u>
 <details>
-  <summary>expand to show steps to setup on **Heroku**...</summary>
+  <summary>expand to show steps to setup on <b>Heroku</b>...</summary>
 
 The installation process is the same as with a usual nightscout installation, but you need to fetch my branch **wip/kitescout** from my fork, and then choose to the branch (**wip/kitescout**) instead of master-branch under Heroku/deploy!
 Here is how you'd do it from the terminal 
