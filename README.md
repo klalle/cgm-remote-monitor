@@ -31,7 +31,8 @@ The installation process depends on how you host your Nightscout website.
     ![google-cloud](./assets/azure.png)
   - <u>**Render**</u>
   - <u>**Docker compose**</u>
-- <details>
+- <u>**Heroku**</u>
+<details>
   <summary>expand to show steps to setup on Heroku...</summary>
 The installation process is the same as with a usual nightscout installation, but you need to fetch my branch **wip/kitescout** from my fork, and then choose to the branch (**wip/kitescout**) instead of master-branch under Heroku/deploy!
 Here is how you'd do it from the terminal 
