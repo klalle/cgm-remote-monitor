@@ -22,7 +22,7 @@ This is a combination of a slightly tweaked version of Nightscout and two of my 
 The installation process depends on how you host your Nightscout website. 
 - <u>**Google Cloud**</u>
   - using the menu provided by the navid-script ([xDrip-tutorial](https://navid200.github.io/xDrip/docs/Nightscout/GoogleCloud.html))
-<details>
+<details style="margin-left: 40px">
   <summary>expand to show steps to setup on <b>Google Cloud</b>...</summary>
 
 ![google-cloud](./assets/google-cloud_2.png)
