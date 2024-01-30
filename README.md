@@ -32,8 +32,12 @@ The installation process depends on how you host your Nightscout website.
 
 - **using docker** (`kallehagstrom/knightscout:latest` or one of the tags from dockerhub)
   - <u>**Azure**</u>
-  
+<details>
+  <summary>expand to show steps to setup on Azure...</summary>
+
     ![google-cloud](./assets/azure.png)
+</details>
+
   - <u>**Render**</u>
   - <u>**Docker compose**</u>
 - <u>**Heroku**</u>
