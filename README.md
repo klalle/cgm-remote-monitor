@@ -20,17 +20,18 @@ This is a combination of a slightly tweaked version of Nightscout and two of my 
 
 ## Installation
 The installation process depends on how you host your Nightscout website. 
-- Google Cloud
+- **Google Cloud**
   - using the menu provided by the navid-script ([xDrip-tutorial](https://navid200.github.io/xDrip/docs/Nightscout/GoogleCloud.html))
   - ![google-cloud](./assets/google-cloud_2.png)
   ![google-cloud](./assets/google-cloud_3.png)
   ![google-cloud](./assets/google-cloud.png)
-- by using docker (`kallehagstrom/knightscout:latest` or one of the tags from dockerhub)
-  - Azure
+- **using docker** (`kallehagstrom/knightscout:latest` or one of the tags from dockerhub)
+  - **Azure**
+  
     ![google-cloud](./assets/azure.png)
-  - Render
-  - Docker compose
-- Heroku
+  - **Render**
+  - **Docker compose**
+- **Heroku**
 The installation process is the same as with a usual nightscout installation, but you need to fetch my branch **wip/kitescout** from my fork, and then choose to the branch (**wip/kitescout**) instead of master-branch under Heroku/deploy!
 Here is how you'd do it from the terminal 
 - Since you have installed AAPS or Ios loop - your computer already have git installed.
