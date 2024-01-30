@@ -35,7 +35,7 @@ The installation process depends on how you host your Nightscout website.
 <details>
   <summary>expand to show steps to setup on <b>Azure</b>...</summary>
 
-    ![google-cloud](./assets/azure.png)
+![google-cloud](./assets/azure.png)
 </details>
 
   - <u>**Render**</u>
