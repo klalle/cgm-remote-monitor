@@ -5,4 +5,4 @@ MODULE NOT FOUND:
 
 build docker 
 from root:
-docker build . -t kallehagstrom/knightscout-15:2024.1
+docker build . -t kallehagstrom/knightscout:2025.1
