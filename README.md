@@ -191,6 +191,11 @@ Only read this if you want to make changes and debug my applications in vscode!
 
 </details>
 
+# dockerhub
+you can find my images on dockerhub: 
+`https://hub.docker.com/repositories/kallehagstrom`
+if you want the kitescout with ai-predictions (knightscout-ai), you must add `PYTHON_API_URL` env var that points out your `knightscout-ai-python-backend` that you also have to serve somewhare. 
+
 ## ********** End of custom stuff **************
 
 Nightscout Web Monitor (a.k.a. cgm-remote-monitor)2
