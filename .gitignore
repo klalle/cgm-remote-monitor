@@ -35,4 +35,4 @@ npm-debug.log
 mongo-data/
 letsencrypt/
 
-package-lock.json
+#package-lock.json
